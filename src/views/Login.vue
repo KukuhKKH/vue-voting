@@ -21,7 +21,8 @@
                   <div class="alert alert-danger" v-if="errors.invalid">{{ errors.invalid }}</div>
                   <div class="form-group form-row mt-3 mb-0">
                      <div class="col-md-4">
-                        <button type="submit" class="btn btn-primary" @click.prevent="postLogin">LOGIN</button>
+                        <button type="submit" class="btn btn-primary" @click.prevent="postLogin" v-if="!loading">LOGIN</button>
+                        <button type="submit" class="btn btn-primary" v-if="loading" disabled>Loading...</button>
                      </div>
                   </div>
                </div>
@@ -46,7 +47,8 @@
             data: {
                email: '',
                password: ''
-            }
+            },
+            loading: false
          }
       },
       created() {
@@ -62,12 +64,16 @@
          ...mapActions('auth', ['submit']),
          ...mapMutations(['CLEAR_ERRORS']),
          postLogin() {
+            this.loading = true
             this.submit(this.data).then(() => {
                if (this.isAuth) {
                   this.CLEAR_ERRORS()
-                  this.$router.push({ name: 'home' })
+                  this.$router.push({ name: 'Home' })
                }
             })
+            setTimeout(() => {
+               this.loading = false
+            }, 500)
          }
       }
    };

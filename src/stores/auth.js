@@ -21,7 +21,7 @@ const actions = {
             })
             .catch((error) => {
                if(error.response.data.status == 'ERROR') {
-                  commit('SET_ERRORS', error.response.data.messages, { root:true })
+                  commit('SET_ERRORS', { invalid: error.response.data.messages}, { root:true })
                }
             })
       })

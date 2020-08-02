@@ -4,7 +4,7 @@ const $axios = axios.create({
    baseURL: 'http://localhost:3000',
    headers: {
       'Content-Type': 'application/json',
-      'token': localStorage.getItem('token') != `null` ? JSON.stringify(localStorage.getItem('token')) : ''
+      'token': localStorage.getItem('token') != `null` ? localStorage.getItem('token') : ''
    }
 })
 

@@ -4,6 +4,11 @@ import store from "../store";
 import Home from "../views/Home.vue"
 import Login from "../views/Login"
 
+import IndexUser from "../views/user/Index"
+import DataUser from "../views/user/User"
+import AddUser from "../views/user/Add"
+import EditUser from "../views/user/Edit"
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -17,6 +22,30 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/user',
+    component: IndexUser,
+    children: [
+      {
+        path: '/',
+        name: 'User.data',
+        component: DataUser,
+        meta: { title: 'Manage User' }
+      },
+      {
+        path: '/add',
+        name: 'User.add',
+        component: AddUser,
+        meta: { title: 'Add User' }
+      },
+      {
+        path: '/edit/:id',
+        name: 'User.edit',
+        component: EditUser,
+        meta: { title: 'Edit User' }
+      }
+    ]
   }
 ]
 
