@@ -9,16 +9,14 @@
       <ul class="sidebar-menu">
          <li>
             <div class="sidebar-title">General</div>
-            <a href="javascript:void(0)" class="sidebar-header">
+            <router-link :to="{name: 'Home'}" class="sidebar-header">
                <i class="icon-desktop"></i><span>Dashboard</span>
-               <i class="fa fa-angle-right pull-right"></i>
-            </a>
-            <ul class="sidebar-submenu">
-               <li><a href="index.html"><i class="fa fa-angle-right"></i>Default</a></li>
-               <li><a href="ecommerce.html"><i class="fa fa-angle-right"></i>E-commerce</a></li>
-               <li><a href="business.html"><i class="fa fa-angle-right"></i>Business<span class="badge badge-secondary ml-3">Tour</span></a></li>
-               <li><a href="crm.html"><i class="fa fa-angle-right"></i>CRM</a></li>
-            </ul>
+            </router-link>
+         </li>
+         <li>
+            <router-link :to="{name: 'User.data'}" class="sidebar-header">
+               <i class="icon-user"></i><span>User</span>
+            </router-link>
          </li>
       </ul>
       <div class="sidebar-widget text-center">

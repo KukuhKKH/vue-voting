@@ -76,6 +76,10 @@
             }).then((res) => {
                if(res.value) {
                   this.removeUser(id)
+                  this.$swal({
+                     title: "Hapus user berhasil",
+                     type: "success"
+                  })
                }
             })
          }

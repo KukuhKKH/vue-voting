@@ -26,9 +26,10 @@ const routes = [
   {
     path: '/user',
     component: IndexUser,
+    meta: { requiresAuth: true },
     children: [
       {
-        path: '/',
+        path: '/user',
         name: 'User.data',
         component: DataUser,
         meta: { title: 'Manage User' }
