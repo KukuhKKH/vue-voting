@@ -4,8 +4,8 @@
          <div class="main-header-left">
             <div class="logo-wrapper">
                <a href="">
-                  <img src="images/logo-light.png" class="image-dark" alt=""/>
-                  <img src="images/logo-light-dark-layout.png" class="image-light" alt=""/>
+                  <img :src="'/images/logo-light.png'" class="image-dark" alt=""/>
+                  <img :src="'/images/logo-light-dark-layout.png'" class="image-light" alt=""/>
                </a>
             </div>
          </div>
@@ -32,7 +32,7 @@
                   </li>
                   <li class="onhover-dropdown">
                      <div class="media  align-items-center">
-                        <img class="align-self-center pull-right mr-2" src="images/dashboard/user.png" alt="header-user"/>
+                        <img class="align-self-center pull-right mr-2" :src="'/images/dashboard/user.png'" alt="header-user"/>
                         <div class="media-body">
                            <h6 class="m-0 txt-dark f-16">
                               My Account

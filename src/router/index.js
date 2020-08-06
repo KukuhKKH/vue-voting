@@ -9,6 +9,11 @@ import DataUser from "../views/user/User"
 import AddUser from "../views/user/Add"
 import EditUser from "../views/user/Edit"
 
+import IndexKandidat from "../views/kandidat/Index"
+import DataKandidat from "../views/kandidat/Kandidat"
+import AddKandidat from "../views/kandidat/Add"
+import EditKandidat from "../views/kandidat/Edit"
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -35,16 +40,41 @@ const routes = [
         meta: { title: 'Manage User' }
       },
       {
-        path: '/add',
+        path: 'add',
         name: 'User.add',
         component: AddUser,
         meta: { title: 'Add User' }
       },
       {
-        path: '/edit/:id',
+        path: 'edit/:id',
         name: 'User.edit',
         component: EditUser,
         meta: { title: 'Edit User' }
+      }
+    ]
+  },
+  {
+    path: '/kandidat',
+    component: IndexKandidat,
+    meta: { requiresAuth: true },
+    children: [
+      {
+        path: '/kandidat',
+        name: 'Kandidat.data',
+        component: DataKandidat,
+        meta: { title: 'Manage Kandidat' }
+      },
+      {
+        path: 'add',
+        name: 'Kandidat.add',
+        component: AddKandidat,
+        meta: { title: 'Add Kandidat' }
+      },
+      {
+        path: 'edit/:id',
+        name: 'Kandidat.edit',
+        component: EditKandidat,
+        meta: { title: 'Edit Kandidat' }
       }
     ]
   }

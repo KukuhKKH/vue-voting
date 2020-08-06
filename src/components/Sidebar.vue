@@ -2,7 +2,7 @@
    <div class="page-sidebar custom-scrollbar">
       <div class="sidebar-user text-center">
          <div>
-            <img class="img-50 rounded-circle" src="assets/images/user/1.jpg" alt="#">
+            <img class="img-50 rounded-circle" :src="'/images/user/1.jpg'" alt="#">
          </div>
          <h6 class="mt-3 f-12">Johan Deo</h6>
       </div>
@@ -16,6 +16,11 @@
          <li>
             <router-link :to="{name: 'User.data'}" class="sidebar-header">
                <i class="icon-user"></i><span>User</span>
+            </router-link>
+         </li>
+         <li>
+            <router-link :to="{name: 'Kandidat.data'}" class="sidebar-header">
+               <i class="icofont icofont-ui-user-group"></i><span>Kandidat</span>
             </router-link>
          </li>
       </ul>
