@@ -2,6 +2,7 @@ import $axios from "../api"
 
 const state = () => ({
    kandidats: [],
+   avatar: {},
 
    kandidat: {
       id: '',
@@ -33,6 +34,9 @@ const mutations = {
          misi: '',
          avatar: ''
       }
+   },
+   SET_FILE(state, payload) {
+      state.avatar = payload
    }
 }
 
@@ -57,9 +61,14 @@ const actions = {
             })
       })
    },
-   submitKandidat({ dispatch, commit, state }) {
+   submitKandidat({ dispatch, commit }, payload) {
+      console.log(payload)
       return new Promise((resolve) => {
-         $axios.post(`/kandidat`, state.kandidat)
+         $axios.post(`/kandidat`, payload, {
+            headers: {
+               'Content-Type': 'multipart/form-data'
+            }
+         })
             .then((response) => {
                dispatch('getKandidats').then(() => {
                   resolve(response.data.data)
@@ -82,6 +91,8 @@ const actions = {
       })
    },
    updateKandidat({ state, commit }, payload) {
+      const formData = new FormData()
+      formData.append('file', state.kandidat.avatar)
       return new Promise((resolve) => {
          $axios.put(`/kandidat/${payload}`, state.kandidat)
             .then((response) => {

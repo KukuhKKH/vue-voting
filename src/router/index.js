@@ -14,6 +14,9 @@ import DataKandidat from "../views/kandidat/Kandidat"
 import AddKandidat from "../views/kandidat/Add"
 import EditKandidat from "../views/kandidat/Edit"
 
+import IndexPemilih from "../views/pemilih/Index"
+import DataPemilih from "../views/pemilih/Pemilih"
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -75,6 +78,19 @@ const routes = [
         name: 'Kandidat.edit',
         component: EditKandidat,
         meta: { title: 'Edit Kandidat' }
+      }
+    ]
+  },
+  {
+    path: '/pemilih',
+    component: IndexPemilih,
+    meta: { requiresAuth: true },
+    children: [
+      {
+        path: '/pemilih',
+        name: 'Pemilih.data',
+        component: DataPemilih,
+        meta: { title: 'Manage Pemilih' }
       }
     ]
   }

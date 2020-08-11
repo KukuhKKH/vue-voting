@@ -23,6 +23,11 @@
                <i class="icofont icofont-ui-user-group"></i><span>Kandidat</span>
             </router-link>
          </li>
+         <li>
+            <router-link :to="{name: 'Pemilih.data'}" class="sidebar-header">
+               <i class="icofont icofont-ui-user-group"></i><span>Pemilih</span>
+            </router-link>
+         </li>
       </ul>
       <div class="sidebar-widget text-center">
          <div class="sidebar-widget-top">

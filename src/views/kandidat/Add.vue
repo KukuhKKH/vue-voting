@@ -6,7 +6,7 @@
                <h5 class="card-title">Add New Kandiat</h5>
             </div>
             <div class="card-body">
-               <kandidat-form/>
+               <kandidat-form ref="formKandidat"></kandidat-form>
                <div class="form-group">
                   <button class="btn btn-primary btn-sm btn-flat" @click.prevent="submit">
                      <i class="fa fa-save"></i> Add New
@@ -28,7 +28,12 @@
       },
       components: {
          'kandidat-form': KandidatForm
-      }
+      },
+      methods: {
+         submit() {
+            this.$refs.formKandidat.submit()
+         }
+      },
    }
 </script>
 
