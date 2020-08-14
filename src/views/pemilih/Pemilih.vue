@@ -5,6 +5,9 @@
             <div class="card-header">
                <button @click="showModal" class="btn btn-primary btn-sm btn-flat">Tambah</button>
                <button class="btn btn-danger ml-3" @click="truncate">Hapus Semua Token</button>
+               <div class="float-right">
+                  <input type="text" class="form-control" placeholder="Cari Token..." v-model="search">
+               </div>
             </div>
             <b-table striped hover bordered :items="pemilihs.data" :fields="fields" show-empty>
                <template v-slot:cell(status)="row">
@@ -12,12 +15,19 @@
                   <div class="badge badge-danger" v-if="!row.item.status">Belum Memilih</div>
                </template>
             </b-table>
-            <div class="row">
-               <div class="col-12 mt-4 text-center">
-                  <p v-if="pemilihs.data"><i class="fa fa-bars"></i> {{ pemilihs.data.length }} item</p>
+            <div class="row container m-3">
+               <div class="col-md-6">
+                  <p v-if="pemilihs.data"><i class="fa fa-bars"></i> {{ pemilihs.data.length }} item dari {{ pemilihs.totalItem }} total data</p>
                </div>
                <div class="col-md-6">
                   <div class="float-right">
+                     <b-pagination
+                        v-model="page"
+                        :total-rows="pemilihs.totalItem"
+                        :per-page="pemilihs.data.length"
+                        aria-controls="pemilihs"
+                        v-if="pemilihs.data && pemilihs.data.length > 0"
+                     ></b-pagination>
                   </div>
                </div>
             </div>
@@ -60,16 +70,33 @@
                { key:'token', label: 'Token' },
                { key:'status', label: 'Status' }
             ],
-            total: 0
+            total: 0,
+            search: ''
          }
       },
       computed: {
          ...mapState('pemilih', {
             pemilihs: state => state.pemilihs
-         })
+         }),
+         page: {
+            get() {
+               return this.$store.state.pemilih.page
+            },
+            set(val) {
+               this.$store.commit('pemilih/SET_PAGE', val)
+            }
+         }
       },
       created() {
          this.getPemilih()
+      },
+      watch: {
+         page() {
+            this.getPemilih()
+         },
+         search() {
+            this.getPemilih(this.search)
+         }
       },
       methods: {
          ...mapActions('pemilih', ['getPemilih', 'truncatePemilih']),

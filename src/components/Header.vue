@@ -4,8 +4,8 @@
          <div class="main-header-left">
             <div class="logo-wrapper">
                <a href="">
-                  <img :src="'/images/logo-light.png'" class="image-dark" alt=""/>
-                  <img :src="'/images/logo-light-dark-layout.png'" class="image-light" alt=""/>
+                  <img :src="'/images/evote.png'" class="image-dark" alt=""/>
+                  <img :src="'/images/evote.png'" class="image-light" alt=""/>
                </a>
             </div>
          </div>
@@ -42,31 +42,7 @@
                      </div>
                      <ul class="profile-dropdown onhover-show-div p-20">
                         <li>
-                           <a href="#">
-                              <i class="icon-user"></i>
-                              Edit Profile
-                           </a>
-                        </li>
-                        <li>
-                           <a href="#">
-                              <i class="icon-email"></i>
-                              Inbox
-                           </a>
-                        </li>
-                        <li>
-                           <a href="#">
-                              <i class="icon-check-box"></i>
-                              Task
-                           </a>
-                        </li>
-                        <li>
-                           <a href="#">
-                              <i class="icon-comments"></i>
-                              Chat
-                           </a>
-                        </li>
-                        <li>
-                           <a href="javascript:void(0)" @click="logout()">
+                           <a href="javascript:void(0)" @click="logout">
                               <i class="icon-power-off"></i>
                               Logout
                            </a>

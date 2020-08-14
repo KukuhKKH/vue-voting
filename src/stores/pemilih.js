@@ -1,19 +1,24 @@
 import $axios from "../api"
 
 const state = () => ({
-   pemilihs: []
+   pemilihs: [],
+   page: 1
 })
 
 const mutations = {
    ASSIGN_DATA(state, payload) {
       state.pemilihs = payload
+   },
+   SET_PAGE(state, payload) {
+      state.page = payload
    }
 }
 
 const actions = {
-   getPemilih({commit}) {
+   getPemilih({ commit, state }, payload) {
+      let search = typeof payload != 'undefined' ? payload:''
       return new Promise((resolve) => {
-         $axios.get(`/pemilih`)
+         $axios.get(`/pemilih?page=${state.page}&kode=${search}`)
             .then(response => {
                commit('ASSIGN_DATA', response.data)
                resolve(response.data)

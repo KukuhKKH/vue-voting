@@ -4,7 +4,7 @@
          <div>
             <img class="img-50 rounded-circle" :src="'/images/user/1.jpg'" alt="#">
          </div>
-         <h6 class="mt-3 f-12">Johan Deo</h6>
+         <h6 class="mt-3 f-12">{{ data.nama }}</h6>
       </div>
       <ul class="sidebar-menu">
          <li>
@@ -15,17 +15,17 @@
          </li>
          <li>
             <router-link :to="{name: 'User.data'}" class="sidebar-header">
-               <i class="icon-user"></i><span>User</span>
+               <i class="icofont icofont-users"></i><span>User</span>
             </router-link>
          </li>
          <li>
             <router-link :to="{name: 'Kandidat.data'}" class="sidebar-header">
-               <i class="icofont icofont-ui-user-group"></i><span>Kandidat</span>
+               <i class="icofont icofont-businessman"></i><span>Kandidat</span>
             </router-link>
          </li>
          <li>
             <router-link :to="{name: 'Pemilih.data'}" class="sidebar-header">
-               <i class="icofont icofont-ui-user-group"></i><span>Pemilih</span>
+               <i class="icofont icofont-deal"></i><span>Pemilih</span>
             </router-link>
          </li>
       </ul>
@@ -45,8 +45,14 @@
 </template>
 
 <script>
+   import { mapState } from 'vuex'
    export default {
-      name: "Sidebar"
+      name: "Sidebar",
+      computed: {
+         ...mapState('auth', {
+            data: state => state.data
+         })
+      }
    }
 </script>
 
