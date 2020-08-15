@@ -24,7 +24,7 @@
                      <b-pagination
                         v-model="page"
                         :total-rows="pemilihs.totalItem"
-                        :per-page="pemilihs.data.length + 1"
+                        :per-page="pemilihs.data.length"
                         v-if="pemilihs.data && pemilihs.data.length > 0"
                      ></b-pagination>
                   </div>
@@ -44,7 +44,7 @@
                   </button>
                </div>
                <div class="modal-body">
-                  <input type="number" class="form-control" min="0" v-model="total" placeholder="Total Token">
+                  <input type="number" autofocus class="form-control" min="0" v-model="total" placeholder="Total Token">
                </div>
                <div class="modal-footer">
                   <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>

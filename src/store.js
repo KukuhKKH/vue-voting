@@ -5,12 +5,13 @@ import auth from './stores/auth'
 import user from './stores/user'
 import kandidat from './stores/kandidat'
 import pemilih from "./stores/pemilih";
+import hasil from './stores/hasil'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
    modules: {
-      auth, kandidat, user, pemilih
+      auth, kandidat, user, pemilih, hasil
    },
    state: {
       token: localStorage.getItem('token'),

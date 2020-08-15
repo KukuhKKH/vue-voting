@@ -32,7 +32,6 @@
                   </li>
                   <li class="onhover-dropdown">
                      <div class="media  align-items-center">
-                        <img class="align-self-center pull-right mr-2" :src="'/images/dashboard/user.png'" alt="header-user"/>
                         <div class="media-body">
                            <h6 class="m-0 txt-dark f-16">
                               My Account

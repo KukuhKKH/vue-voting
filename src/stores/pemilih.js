@@ -30,7 +30,7 @@ const actions = {
    },
    truncatePemilih({ dispatch }) {
       return new Promise((resolve) => {
-         $axios.post(`/pemilih/truncate/token`)
+         $axios.delete(`/pemilih/truncate/token`)
             .then(() => {
                dispatch('getPemilih').then(() => resolve())
             })
