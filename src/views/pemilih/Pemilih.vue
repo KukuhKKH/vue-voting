@@ -24,8 +24,7 @@
                      <b-pagination
                         v-model="page"
                         :total-rows="pemilihs.totalItem"
-                        :per-page="pemilihs.data.length"
-                        aria-controls="pemilihs"
+                        :per-page="pemilihs.data.length + 1"
                         v-if="pemilihs.data && pemilihs.data.length > 0"
                      ></b-pagination>
                   </div>
@@ -49,7 +48,7 @@
                </div>
                <div class="modal-footer">
                   <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-secondary" @click="generate">Generate</button>
+                  <button type="button" class="btn btn-secondary" :disabled="loading" @click="generate">Generate</button>
                </div>
             </div>
          </div>
@@ -71,7 +70,8 @@
                { key:'status', label: 'Status' }
             ],
             total: 0,
-            search: ''
+            search: '',
+            loading: false
          }
       },
       computed: {
@@ -99,7 +99,7 @@
          }
       },
       methods: {
-         ...mapActions('pemilih', ['getPemilih', 'truncatePemilih']),
+         ...mapActions('pemilih', ['getPemilih', 'truncatePemilih', 'generateToken']),
          showModal() {
             this.total = 0
             $('#modalTambah').modal('show')
@@ -123,8 +123,12 @@
                }
             })
          },
-         generate() {
-
+         async generate() {
+            this.loading = true
+            let total = this.total
+            await this.generateToken(total)
+            this.loading = false
+            $('#modalTambah').modal('hide')
          }
       }
    }

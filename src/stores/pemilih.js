@@ -30,9 +30,21 @@ const actions = {
    },
    truncatePemilih({ dispatch }) {
       return new Promise((resolve) => {
-         $axios.post(`/truncate/token`)
+         $axios.post(`/pemilih/truncate/token`)
             .then(() => {
                dispatch('getPemilih').then(() => resolve())
+            })
+      })
+   },
+   generateToken({ commit, dispatch }, payload) {
+      return new Promise(resolve => {
+         $axios.post('/pemilih', { jumlah:payload })
+            .then(response => {
+               commit('ASSIGN_DATA', response.data)
+               dispatch('getPemilih').then(() => resolve())
+            })
+            .catch((error) => {
+               commit('SET_ERRORS', error.response.data.errors, { root: true })
             })
       })
    }
